@@ -1,0 +1,3 @@
+[submodule "libs/cinema-web-client"]
+	path = libs/cinema-web-client
+	url = https://github.com/Starz0r/cinema-web-client.git

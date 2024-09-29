@@ -1,0 +1,64 @@
+{
+  "build": {
+    "beforeDevCommand": "npm --prefix %CINEMA_DEV_DIR% run dev",
+    "beforeBuildCommand": "npm install ci && npm run build",
+    "devPath": "http://localhost:3000",
+    "distDir": ".\\libs\\cinema-web-client\\out",
+    "withGlobalTauri": true
+  },
+  "package": {
+    "productName": "Cinema",
+    "version": "0.0.1"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true,
+		"sidecar": true,
+		"scope": [
+			{ "name": ".\\bin\\yt-dlp", "sidecar": true }
+		]
+      },
+	  "fs": {
+		  "all": true,
+		  "scope": ["$APPLOCALDATA\\*"]
+	  },
+	  "path": {
+		  "all": true
+	  }
+    },
+    "windows": [
+      {
+        "title": "cinema",
+        "width": 1280,
+        "height": 720,
+		"additionalBrowserArgs": "--disable-web-security --disable-features=msWebOOUI,msPdfOOUI,msSmartScreenProtection"
+      }
+    ],
+    "security": {
+      "csp": null
+    },
+    "bundle": {
+      "active": true,
+      "targets": "all",
+      "identifier": "app.starz0r.cinema",
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+	  "externalBin": [
+		  ".\\bin\\yt-dlp"
+	  ],
+	  "windows": {
+			"webviewInstallMode": {
+				"type": "skip"
+			}
+	  }
+    }
+  }
+}
